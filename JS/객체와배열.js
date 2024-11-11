@@ -36,3 +36,13 @@ console.log(1 === "1"); // false, 일치연산자, 값과 타입이 같은지 �
 
 console.log(1 !== "1"); // true, 일치 연산자, 값과 타입이 다른지 확인
 console.log(1 != "1"); // false, 동등 연산자, 값이 다른지 확인
+
+// 형변환 : 묵지석 형변환과 명시적 형변환
+let num1 = 10 + "10"; // 1010, 숫자와 문자열을 결합하면 문자열로 자동 형변환
+console.log(num1);
+
+let num2 = 10 + Number("10"); // 명시적 형변환
+console.log(num2);
+
+let num3 = 10 + String(10); // 명시적 형변환과 묵시적 형변환이 일어남
+console.log(num3);
