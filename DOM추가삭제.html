@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    #container {
+      width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    input[type="text"] {
+      width: 370px;
+      float: left;
+      height: 30px;
+      /* padding-left: 30px; */
+    }
+    button {
+      width: 90px;
+      height: 30px;
+      float: right;
+      background: #222;
+      color: #fff;
+      border: none;
+    }
+    hr {
+      clear: both;
+      display: none;
+    }
+    ul {
+      list-style: none;
+      padding-top: 50px;
+      margin: 0;
+      padding-left: 0;
+    }
+    li {
+      line-height: 2.5;
+    }
+    li:hover {
+      cursor: pointer;
+      /* li 항목에 cursor 갖다 대면 pointer 표시 (선택 되는 것 처럼) */
+    }
+  </style>
+  <body>
+    <div id="container">
+      <h1>DOM 추가/삭제</h1>
+      <p>공부할 과목을 기록해 보세요.</p>
+      <p>공부가 끝난 과목은 더블 클릭해서 삭제할 수 있습니다.</p>
+      <input type="text" id="subject" autofocus />
+      <button onclick="newRegister();">추가</button>
+      <hr />
+      <ul id="itemList"></ul>
+      <script>
+        function newRegister() {
+          const subject = document.querySelector("#subject");
+          // select를 해서 먼저 값을 빼내는 것이 필요 / 해당하는 input 요소를 찾음
+          const newItem = document.createElement("li");
+          newItem.innerText = subject.value;
+          subject.value = ""; // 창 비우기
+          // 새로운 항목을 추가하기 위해 li 태그 생성
+          // 생성된 li 태그를 추가 하기 위해 부모 태그를 선택
+          const itemList = document.querySelector("#itemList");
+          itemList.insertBefore(newItem, itemList.childNodes[0]);
+          // 해당 아이템 더블 클릭 시 삭제하기
+          newItem.addEventListener("dblclick", () => {
+            itemList.removeChild(newItem);
+          });
+          // 콜백 함수로 -> 더블 클릭 시 자동으로 삭제되는 item으로 적용한다
+          // 자기 자신 죽이는 것 불가능 -> 그 위쪽 부모 태그인 itemList에서 removeChild 적용
+        }
+      </script>
+    </div>
+  </body>
+</html>
