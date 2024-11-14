@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 1800px;
+        background-color: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+      }
+      .container > .box {
+        position: relative;
+        display: inline-flex;
+        width: 300px;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+        margin: 30px;
+      }
+      .display {
+        display: flex;
+        position: relative;
+        width: 1800px;
+        height: 800px;
+        margin-top: 10px;
+        margin: 30px auto;
+        justify-content: center;
+        align-items: center;
+      }
+      .display1 {
+        display: inline-flex;
+        position: relative;
+        width: 600px;
+        height: 800px;
+        margin-top: 10px;
+        margin: 10px;
+        border: 2px solid black;
+        border-radius: 10%;
+      }
+      .display2 {
+        display: inline-flex;
+        position: relative;
+        width: 600px;
+        height: 800px;
+        margin-top: 10px;
+        margin: 10px;
+        border: 2px solid black;
+        border-radius: 10%;
+      }
+      button {
+        position: relative;
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+        width: 300px;
+        height: 100px;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+      button:hover {
+        text-decoration: underline;
+        filter: brightness(90%);
+      }
+      .green {
+        background-color: green;
+      }
+      .orange {
+        background-color: orange;
+      }
+      .purple {
+        background-color: purple;
+      }
+      .blue {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <div>
+    <div class="container">
+      <div class="box">
+        <button class="green" onclick="btngreen()">Green</button>
+      </div>
+      <div class="box">
+        <button class="orange" onclick="btnorange()">Orange</button>
+      </div>
+      <div class="box">
+        <button class="purple" onclick="btnpurple()">Purple</button>
+      </div>
+      <div class="box">
+        <button class="blue" onclick="btnblue()">Blue</button>
+      </div>
+    </div>
+    <div class="display">
+    <div class="display1"></div>
+    <div class="display2"></div>
+  </div>
+    <script>
+      const box1 = document.querySelector(".display1 ");
+      const box2 = document.querySelector(".display2");
+      function btngreen() {
+        box1.style.backgroundColor = "green";
+        box2.style.backgroundColor = "blue";
+      }
+      function btnorange() {
+        box1.style.backgroundColor = "orange";
+        box2.style.backgroundColor = "purple";
+      }
+      function btnpurple() {
+        box1.style.backgroundColor = "purple";
+        box2.style.backgroundColor = "orange";
+      }
+      function btnblue() {
+        box1.style.backgroundColor = "blue";
+        box2.style.backgroundColor = "green";
+      }
+    </script>
+  </body>
+</html>

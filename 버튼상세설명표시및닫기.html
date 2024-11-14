@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 500px;
+        /* border: 2px solid black; */
+        margin: 0 auto;
+        position: relative;
+      }
+      .image {
+        width: 500px;
+        height: 445px;
+        display: block;
+        background-image: url("/images/잇지.jpeg");
+        background-size: 500px 445px;
+        background-position: 0 0;
+        position: relative;
+      }
+      .desc_open {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        height: 30px;
+        opacity: 0.7;
+      }
+      p {
+        font-size: large;
+        line-height: 30px;
+        margin: 10px;
+        opacity: 0;
+      }
+      h3 {
+        margin: 10px;
+        opacity: 0;
+      }
+      .desc_close {
+        position: relative;
+        height: 30px;
+        margin-left: 10px;
+        opacity: 0;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image">
+        <button class="desc_open" onclick="desc_open()">상세 설명 보기</button>
+      </div>
+      <div class="description">
+        <h3 class="description_text_1">그룹 잇지</h3>
+        <p class="description_text_2">
+          팀명 'ITZY'는 '너희가 원하는 거 전부 있지? 있지!' 라는 뜻을 가지고
+          있으며, 정식 한글 표기법은 있지이다. 혹 영어명인 'ITZY'로만 들어본
+          사람들이 한글로는 어떻게 적는지 몰라 '잇지'라고 부르는 경우도 꽤 많이
+          있는데, '있지'라고 불러야 한다며 정정해주는 것이 팬덤 잇지에게는
+          일상이 되었다.
+        </p>
+        <button class="desc_close" onclick="desc_close()">
+          상세 설명 닫기
+        </button>
+      </div>
+    </div>
+    <script>
+      const desc_opacity1 = document.querySelector(".desc_open");
+      const desc_opacity2 = document.querySelector(".desc_close");
+      const description1 = document.querySelector(".description_text_1");
+      const description2 = document.querySelector(".description_text_2");
+      function desc_open() {
+        desc_opacity1.style.opacity = 0;
+        desc_opacity2.style.opacity = 1;
+        description1.style.opacity = 1;
+        description2.style.opacity = 1;
+      }
+      function desc_close() {
+        desc_opacity1.style.opacity = 0.7;
+        desc_opacity2.style.opacity = 0;
+        description1.style.opacity = 0;
+        description2.style.opacity = 0;
+      }
+    </script>
+  </body>
+</html>
