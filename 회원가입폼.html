@@ -76,6 +76,18 @@
         margin: 10px 0 10px 0;
         opacity: 0;
       }
+      .registration:disabled {
+        background-color: grey;
+        cursor: not-allowed;
+      }
+      .registration:enabled {
+        background-color: blue;
+        cursor: pointer;
+      }
+      .registration:enabled:hover {
+        text-decoration: underline;
+        filter: brightness(0.9);
+      }
     </style>
   </head>
   <body>
@@ -110,7 +122,7 @@
           required
         />
         <p class="phonecheck">""</p>
-        <button type="submit">가입 요청</button>
+        <button class="registration" type="submit" disabled>가입 요청</button>
       </div>
     </div>
     <script>
@@ -124,6 +136,8 @@
           idcheck.style.color = "green";
           idcheck.style.margin = "10px 0 10px 210px";
           return true;
+        } else if (idInput.value === "") {
+          idcheck.style.opacity = "0";
         } else {
           idcheck.textContent = "입력 조건이 맞지 않습니다.";
           idcheck.style.opacity = "1";
@@ -142,6 +156,8 @@
           pwcheck.style.color = "green";
           pwcheck.style.margin = "10px 0 10px 210px";
           return true;
+        } else if (pwInput.value === "") {
+          pwcheck.style.opacity = "0";
         } else {
           pwcheck.textContent = "입력 조건이 맞지 않습니다.";
           pwcheck.style.opacity = "1";
@@ -159,6 +175,8 @@
           emailcheck.style.color = "green";
           emailcheck.style.margin = "10px 0 10px 210px";
           return true;
+        } else if (emailInput.value === "") {
+          emailcheck.style.opacity = "0";
         } else {
           emailcheck.textContent = "입력 조건이 맞지 않습니다.";
           emailcheck.style.opacity = "1";
@@ -176,6 +194,8 @@
           phonecheck.style.color = "green";
           phonecheck.style.margin = "10px 0 10px 210px";
           return true;
+        } else if (phoneInput.value === "") {
+          phonecheck.style.opacity = "0";
         } else {
           phonecheck.textContent = "입력 조건이 맞지 않습니다.";
           phonecheck.style.opacity = "1";
@@ -183,6 +203,26 @@
           phonecheck.style.margin = "10px 0 10px 150px";
         }
       });
+      function validateForm() {
+        const isIdValid = regexid.test(idInput.value);
+        const isPwValid = regexpw.test(pwInput.value);
+        const isEmailValid = regexemail.test(emailInput.value);
+        const isPhoneValid = regexphone.test(phoneInput.value);
+
+        // 모든 입력값이 유효할 경우에만 버튼 활성화
+        document.querySelector(".registration").disabled = !(
+          isIdValid &&
+          isPwValid &&
+          isEmailValid &&
+          isPhoneValid
+        );
+      }
+
+      // 각 입력 필드에 `input` 이벤트 리스너 추가
+      idInput.addEventListener("input", validateForm);
+      pwInput.addEventListener("input", validateForm);
+      emailInput.addEventListener("input", validateForm);
+      phoneInput.addEventListener("input", validateForm);
     </script>
   </body>
 </html>
