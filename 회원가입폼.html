@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 400px;
+        height: 500px;
+        margin: 0 auto;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(128, 128, 128, 0.1);
+      }
+      .sign_up_form {
+        width: 350px;
+        height: 450px;
+        border: 2px solid white;
+        border-radius: 2%;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+
+        background-color: white;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+      input {
+        width: 300px;
+        height: 35px;
+        display: flex;
+        position: relative;
+        border: 1px solid rgba(128, 128, 128, 0.5);
+        border-radius: 4px;
+        outline: none;
+      }
+      input:focus {
+        border-color: skyblue;
+      }
+      button {
+        width: 300px;
+        height: 40px;
+        color: white;
+        background-color: grey;
+        margin-top: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+      }
+      .idcheck {
+        font-size: 0.8rem;
+        margin: 10px 0 10px 0;
+        opacity: 0;
+      }
+      .pwcheck {
+        font-size: 0.8rem;
+        margin: 10px 0 10px 0;
+        opacity: 0;
+      }
+      .emailcheck {
+        font-size: 0.8rem;
+        margin: 10px 0 10px 0;
+        opacity: 0;
+      }
+      .phonecheck {
+        font-size: 0.8rem;
+        margin: 10px 0 10px 0;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sign_up_form">
+        <h1>회원 가입</h1>
+        <input
+          type="text"
+          class="sign_up_id"
+          placeholder="아이디 입력"
+          required
+        />
+        <p class="idcheck">""</p>
+        <input
+          type="text"
+          class="sign_up_pw"
+          placeholder="비밀번호 입력"
+          required
+        />
+        <p class="pwcheck">""</p>
+        <input
+          type="email"
+          class="sign_up_email"
+          placeholder="이메일 입력"
+          required
+        />
+        <p class="emailcheck">""</p>
+        <input
+          type="text"
+          class="sign_up_phone"
+          placeholder="전화번호 입력"
+          required
+        />
+        <p class="phonecheck">""</p>
+        <button type="submit">가입 요청</button>
+      </div>
+    </div>
+    <script>
+      const regexid = /^[0-9a-zA-Z_]{8,20}$/;
+      const idInput = document.getElementsByClassName("sign_up_id")[0];
+      const idcheck = document.getElementsByClassName("idcheck")[0];
+      idInput.addEventListener("input", function () {
+        if (regexid.test(idInput.value)) {
+          idcheck.textContent = "사용 가능합니다.";
+          idcheck.style.opacity = "1";
+          idcheck.style.color = "green";
+          idcheck.style.margin = "10px 0 10px 210px";
+          return true;
+        } else {
+          idcheck.textContent = "입력 조건이 맞지 않습니다.";
+          idcheck.style.opacity = "1";
+          idcheck.style.color = "red";
+          idcheck.style.margin = "10px 0 10px 150px";
+        }
+      });
+      const regexpw =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+      const pwInput = document.getElementsByClassName("sign_up_pw")[0];
+      const pwcheck = document.getElementsByClassName("pwcheck")[0];
+      pwInput.addEventListener("input", function () {
+        if (regexpw.test(pwInput.value)) {
+          pwcheck.textContent = "사용 가능합니다.";
+          pwcheck.style.opacity = "1";
+          pwcheck.style.color = "green";
+          pwcheck.style.margin = "10px 0 10px 210px";
+          return true;
+        } else {
+          pwcheck.textContent = "입력 조건이 맞지 않습니다.";
+          pwcheck.style.opacity = "1";
+          pwcheck.style.color = "red";
+          pwcheck.style.margin = "10px 0 10px 150px";
+        }
+      });
+      const regexemail = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+      const emailInput = document.getElementsByClassName("sign_up_email")[0];
+      const emailcheck = document.getElementsByClassName("emailcheck")[0];
+      emailInput.addEventListener("input", function () {
+        if (regexemail.test(emailInput.value)) {
+          emailcheck.textContent = "사용 가능합니다.";
+          emailcheck.style.opacity = "1";
+          emailcheck.style.color = "green";
+          emailcheck.style.margin = "10px 0 10px 210px";
+          return true;
+        } else {
+          emailcheck.textContent = "입력 조건이 맞지 않습니다.";
+          emailcheck.style.opacity = "1";
+          emailcheck.style.color = "red";
+          emailcheck.style.margin = "10px 0 10px 150px";
+        }
+      });
+      const regexphone = /^010-\d{4}-\d{4}$/;
+      const phoneInput = document.getElementsByClassName("sign_up_phone")[0];
+      const phonecheck = document.getElementsByClassName("phonecheck")[0];
+      phoneInput.addEventListener("input", function () {
+        if (regexphone.test(phoneInput.value)) {
+          phonecheck.textContent = "사용 가능합니다.";
+          phonecheck.style.opacity = "1";
+          phonecheck.style.color = "green";
+          phonecheck.style.margin = "10px 0 10px 210px";
+          return true;
+        } else {
+          phonecheck.textContent = "입력 조건이 맞지 않습니다.";
+          phonecheck.style.opacity = "1";
+          phonecheck.style.color = "red";
+          phonecheck.style.margin = "10px 0 10px 150px";
+        }
+      });
+    </script>
+  </body>
+</html>
